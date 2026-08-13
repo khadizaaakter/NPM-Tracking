@@ -9,7 +9,6 @@ import Process_report_flow from "@/views/process report/process_report_flow.vue"
 import Gantt_chart from "@/views/Gantt Report/gantt_chart.vue";
 import New_product_calender from "@/views/New product calender/new_product_calender.vue";
 
-
 const routes = [
   {
     path: "/",

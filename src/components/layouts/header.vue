@@ -23,12 +23,6 @@
       </RouterLink>
     </div>
 
-    <h1
-      class="hidden md:block text-sm font-semibold text-slate-500 uppercase tracking-wide"
-    >
-      {{ pageTitle }}
-    </h1>
-
     <div class="flex items-center gap-3 sm:gap-4">
       <button
         type="button"
