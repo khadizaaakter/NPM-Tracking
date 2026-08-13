@@ -73,13 +73,13 @@ const sampleRows = [
 
 <template>
   <MainLayout>
-    <div class="min-h-screen bg-slate-50 p-6 md:p-8">
+    <div class="min-h-screen bg-slate-50 p-4 sm:p-6 md:p-8">
       <div class="flex flex-col lg:flex-row lg:items-start gap-8">
-       
+
 
         <!-- Workflow status cards -->
         <div
-          class="flex-1 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 xl:grid-cols-7 gap-2"
+          class="flex-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-2"
         >
           <div
             v-for="(card, index) in cards"

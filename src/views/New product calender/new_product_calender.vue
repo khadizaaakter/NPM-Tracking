@@ -111,8 +111,8 @@ function cellColor(colIndex, rowIndex) {
 
 <template>
   <MainLayout>
-    <div class="min-h-screen bg-slate-50 p-6 md:p-8 font-serif">
-      <h1 class="text-lg font-bold text-black mb-2">
+    <div class="min-h-screen bg-slate-50 p-4 sm:p-6 md:p-8 font-serif">
+      <h1 class="text-base sm:text-lg font-bold text-black mb-2">
         New Product (New Molecule+Line Extension) Calendar
       </h1>
 

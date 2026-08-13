@@ -101,20 +101,20 @@ function cellColor(row, weekIndex) {
 
 <template>
   <MainLayout>
-    <div class="min-h-screen bg-slate-50 p-6 md:p-8">
+    <div class="min-h-screen bg-slate-50 p-4 sm:p-6 md:p-8">
       <!-- Header: subtitle, title banner, legend -->
-      <div class="flex items-start justify-between gap-4 mb-4">
-        <div class="text-sm font-bold text-slate-800 whitespace-nowrap">
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
+        <div class="text-sm font-bold text-slate-800">
           {{ productTitle }}
         </div>
 
         <div
-          class="bg-blue-400 text-white font-bold text-lg px-10 py-1 rounded-md shadow-sm"
+          class="self-start bg-blue-400 text-white font-bold text-lg px-6 sm:px-10 py-1 rounded-md shadow-sm"
         >
           Timeline
         </div>
 
-        <table class="text-xs border-collapse shrink-0">
+        <table class="text-xs border-collapse shrink-0 self-start sm:self-auto">
           <thead>
             <tr>
               <th
