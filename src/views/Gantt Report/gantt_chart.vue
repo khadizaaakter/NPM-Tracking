@@ -174,7 +174,7 @@ function cellColor(row, weekIndex) {
                 <th
                   v-for="n in WEEKS_PER_MONTH"
                   :key="month.label + '-w' + n"
-                  class="border border-slate-200 bg-slate-50 px-1 py-1 font-medium text-slate-500 w-[16px]"
+                  class="border border-slate-200 bg-slate-50 px-1 py-1 font-medium text-black w-[16px]"
                 >
                   W-{{ n }}
                 </th>
@@ -183,16 +183,16 @@ function cellColor(row, weekIndex) {
           </thead>
           <tbody>
             <tr v-for="row in rows" :key="row.item" class="odd:bg-white even:bg-slate-50/60">
-              <td class="sticky left-0 z-10 bg-inherit border border-slate-300 px-3 py-2 text-left text-xs text-slate-700 whitespace-nowrap">
+              <td class="sticky left-0 z-10 bg-inherit border border-slate-300 px-3 py-2 text-left text-xs text-black whitespace-nowrap">
                 {{ row.item }}
               </td>
-              <td class="border border-slate-300 px-2 py-2 text-center text-xs text-slate-600">
+              <td class="border border-slate-300 px-2 py-2 text-center text-xs text-black">
                 {{ row.responsibility }}
               </td>
-              <td class="border border-slate-300 px-2 py-2 text-center text-xs text-slate-600">
+              <td class="border border-slate-300 px-2 py-2 text-center text-xs text-black">
                 {{ row.status }}
               </td>
-              <td class="border border-slate-300 px-2 py-2 text-center text-xs text-slate-600">
+              <td class="border border-slate-300 px-2 py-2 text-center text-xs text-black">
                 {{ row.daysRequired }}
               </td>
               <td
