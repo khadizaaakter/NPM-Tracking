@@ -16,7 +16,6 @@ function stageInfo(key) {
 
 function download(stageKey) {
   const stage = stageInfo(stageKey);
-  if (!stage.available) return;
   const link = document.createElement("a");
   link.href = documentFileUrl(stageKey);
   link.download = `${product.value.slug}-${stage.key}.${stageFileExt(stageKey)}`;
@@ -45,8 +44,8 @@ function download(stageKey) {
       <template v-else>
         <!-- Product summary card -->
         <div class="max-w-5xl mx-auto mb-6 rounded-2xl border border-slate-200 bg-white shadow-sm px-6 py-5">
-          <p class="text-xs font-semibold uppercase tracking-wider text-indigo-500 mb-1">Product Launch Document Flow</p>
-          <h1 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">{{ product.molecule }}</h1>
+          <h1 class="text-xl font-semibold uppercase tracking-wider text-indigo-500 mb-1">Product Launch Document Flow</h1>
+          <!-- <h1 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">{{ product.molecule }}</h1> -->
           <div class="flex flex-wrap gap-2">
           </div>
         </div>
@@ -60,14 +59,11 @@ function download(stageKey) {
                 <template v-for="(key, ki) in row.keys" :key="key">
                   <button
                     type="button"
-                    :disabled="!stageInfo(key).available"
-                    class="group relative flex-1 inline-flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-xs sm:text-sm font-semibold text-center shadow-sm transition-all duration-150"
-                    :class="!stageInfo(key).available
-                      ? 'border-slate-200 bg-slate-100 text-slate-400 cursor-not-allowed shadow-none'
-                      : (stageInfo(key).highlight
-                        ? 'border-transparent bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-indigo-200 ring-1 ring-indigo-300 hover:-translate-y-0.5 hover:shadow-md'
-                        : 'border-slate-200 bg-white text-slate-700 hover:border-indigo-300 hover:bg-indigo-50/60 hover:-translate-y-0.5 hover:shadow-md')"
-                    :title="stageInfo(key).available ? `Download ${stageInfo(key).label}` : `${stageInfo(key).label} (not available yet)`"
+                    class="group relative flex-1 inline-flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-xs sm:text-sm font-semibold text-center shadow-sm transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md"
+                    :class="stageInfo(key).highlight
+                      ? 'border-transparent bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-indigo-200 ring-1 ring-indigo-300'
+                      : 'border-slate-200 bg-white text-slate-700 hover:border-indigo-300 hover:bg-indigo-50/60'"
+                    :title="`Download ${stageInfo(key).label}`"
                     @click="download(key)"
                   >
                     <svg v-if="stageInfo(key).highlight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 shrink-0">

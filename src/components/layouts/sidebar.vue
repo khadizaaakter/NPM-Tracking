@@ -14,10 +14,26 @@
   >
     <a-menu
       mode="inline"
-      :selected-keys="[route.name === 'new_product_document_files' ? 'new_product_document' : route.name]"
+      :selected-keys="[route.name]"
       class="!border-0 h-[calc(100%-1rem)] overflow-y-auto"
       @click="$emit('update:modelValue', false)"
     >
+
+          <a-menu-item-group key="new_product_calender" title="New Product">
+        <a-menu-item key="new_product_document" title="New Product Document">
+          <router-link :to="{ name: 'new_product_document' }">
+            <file-text-outlined />
+            <span>New Product Document</span>
+          </router-link>
+        </a-menu-item>
+
+        <a-menu-item key="new_product_calender" title="New Product Calendar">
+          <router-link :to="{ name: 'new_product_calender' }">
+            <calendar-outlined />
+            <span>New Product Calendar</span>
+          </router-link>
+        </a-menu-item>
+      </a-menu-item-group>
       <a-menu-item-group key="process_report" title="Process Report">
         <a-menu-item key="mkt_dashboard" title="MKT Dashboard">
           <router-link :to="{ name: 'mkt_dashboard' }">
@@ -60,20 +76,7 @@
         </a-menu-item>
       </a-menu-item-group>
 
-      <a-menu-item-group key="new_product_calender" title="New Product Calendar">
-        <a-menu-item key="new_product_calender" title="New Product Calendar">
-          <router-link :to="{ name: 'new_product_calender' }">
-            <calendar-outlined />
-            <span>New Product Calendar</span>
-          </router-link>
-        </a-menu-item>
-        <a-menu-item key="new_product_document" title="New Product Document">
-          <router-link :to="{ name: 'new_product_document' }">
-            <file-text-outlined />
-            <span>New Product Document</span>
-          </router-link>
-        </a-menu-item>
-      </a-menu-item-group>
+
     </a-menu>
   </aside>
 </template>

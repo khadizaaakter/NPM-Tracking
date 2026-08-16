@@ -1,8 +1,8 @@
 // Ordered stages as they appear on the product launch flowchart.
 export const documentStages = [
-  { key: "product_proposal", label: "Product Proposal", ext: "xlsx", available: true },
-  { key: "market_feasibility", label: "Market Feasibility", available: true },
-  { key: "internal_product_brief", label: "Internal Product Brief", available: true },
+  { key: "product_proposal", label: "Product Proposal", ext: "xlsx" },
+  { key: "market_feasibility", label: "Market Feasibility" },
+  { key: "internal_product_brief", label: "Internal Product Brief" },
   { key: "forecast_6m", label: "6M Forecast" },
   { key: "product_brief_approval", label: "Product Brief Approval" },
   { key: "formulation_concurrence", label: "Formulation Concurrence" },
@@ -25,13 +25,34 @@ export const documentStages = [
   { key: "product_launching_circular", label: "Product Launching Circular", highlight: true },
 ];
 
-// Serpentine row layout matching the reference flowchart (each row alternates direction).
+// Serpentine row layout matching the reference flowchart (each row alternates direction),
+// grouped into named phases so the flow reads as a story rather than a flat grid.
 export const flowRows = [
-  { reverse: false, keys: ["product_proposal", "market_feasibility", "internal_product_brief", "forecast_6m", "product_brief_approval"] },
-  { reverse: true, keys: ["formulation_concurrence", "stability_3m", "recipe_approval", "pm_spec", "internal_brand_name"] },
-  { reverse: false, keys: ["packaging_concurrence", "cogs_copy", "internal_price", "stability_6m", "pm_design_approval"] },
-  { reverse: true, keys: ["annexure_approval", "inclusion_approval", "afpc_doc", "price_approval"] },
-  { reverse: false, keys: ["final_packaging", "internal_price_circular", "ma_certificate", "product_launching_circular"] },
+  {
+    phase: "Concept & Proposal",
+    reverse: false,
+    keys: ["product_proposal", "market_feasibility", "internal_product_brief", "forecast_6m", "product_brief_approval"],
+  },
+  {
+    phase: "Formulation & Development",
+    reverse: true,
+    keys: ["formulation_concurrence", "stability_3m", "recipe_approval", "pm_spec", "internal_brand_name"],
+  },
+  {
+    phase: "Packaging & Pricing",
+    reverse: false,
+    keys: ["packaging_concurrence", "cogs_copy", "internal_price", "stability_6m", "pm_design_approval"],
+  },
+  {
+    phase: "Regulatory Approvals",
+    reverse: true,
+    keys: ["annexure_approval", "inclusion_approval", "afpc_doc", "price_approval"],
+  },
+  {
+    phase: "Launch Readiness",
+    reverse: false,
+    keys: ["final_packaging", "internal_price_circular", "ma_certificate", "product_launching_circular"],
+  },
 ];
 
 export const products = [
@@ -53,10 +74,17 @@ export function findProductBySlug(slug) {
   return products.find((p) => p.slug === slug);
 }
 
+// Stages with a real, stage-specific file in public/documents/download_doc/.
+// Everything else falls back to placeholder.pdf until its real file is added.
+const STAGES_WITH_FILES = new Set(["product_proposal", "market_feasibility", "internal_product_brief"]);
+
 export function stageFileExt(stageKey) {
   return documentStages.find((s) => s.key === stageKey)?.ext ?? "pdf";
 }
 
 export function documentFileUrl(stageKey) {
+  if (!STAGES_WITH_FILES.has(stageKey)) {
+    return `${import.meta.env.BASE_URL}documents/download_doc/placeholder.pdf`;
+  }
   return `${import.meta.env.BASE_URL}documents/download_doc/${stageKey}.${stageFileExt(stageKey)}`;
 }
