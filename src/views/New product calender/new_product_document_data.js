@@ -1,8 +1,8 @@
 // Ordered stages as they appear on the product launch flowchart.
 export const documentStages = [
-  { key: "product_proposal", label: "Product Proposal" },
-  { key: "market_feasibility", label: "Market Feasibility" },
-  { key: "internal_product_brief", label: "Internal Product Brief" },
+  { key: "product_proposal", label: "Product Proposal", ext: "xlsx", available: true },
+  { key: "market_feasibility", label: "Market Feasibility", available: true },
+  { key: "internal_product_brief", label: "Internal Product Brief", available: true },
   { key: "forecast_6m", label: "6M Forecast" },
   { key: "product_brief_approval", label: "Product Brief Approval" },
   { key: "formulation_concurrence", label: "Formulation Concurrence" },
@@ -53,6 +53,10 @@ export function findProductBySlug(slug) {
   return products.find((p) => p.slug === slug);
 }
 
-export function documentFileUrl(slug, stageKey) {
-  return `/documents/${slug}/${stageKey}.pdf`;
+export function stageFileExt(stageKey) {
+  return documentStages.find((s) => s.key === stageKey)?.ext ?? "pdf";
+}
+
+export function documentFileUrl(stageKey) {
+  return `${import.meta.env.BASE_URL}documents/download_doc/${stageKey}.${stageFileExt(stageKey)}`;
 }
