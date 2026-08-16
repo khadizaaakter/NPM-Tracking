@@ -135,7 +135,10 @@ function cellColor(row, weekIndex) {
           </thead>
           <tbody>
             <tr>
-              <td colspan="2" class="border border-slate-400 text-center py-1">
+              <td colspan="1" class="border border-slate-400 text-center py-1">
+                {{ launchingDate }}
+              </td>
+              <td colspan="1" class="border border-slate-400 text-center py-1">
                 {{ launchingDate }}
               </td>
             </tr>

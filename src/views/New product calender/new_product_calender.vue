@@ -126,7 +126,7 @@ function cellColor(colIndex, rowIndex) {
           <tbody>
             <!-- Summary rows -->
             <tr class="bg-slate-50">
-              <td class="border-b border-r border-slate-200 px-2 py-1.5 font-semibold text-slate-600">NCI</td>
+              <td class="border-b border-r border-slate-200 px-2 py-1.5 font-semibold text-slate-600">NG</td>
               <td
                 v-for="(v, i) in stats.ng"
                 :key="'ng-' + i"
