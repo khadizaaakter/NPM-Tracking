@@ -14,7 +14,7 @@
   >
     <a-menu
       mode="inline"
-      :selected-keys="[route.name]"
+      :selected-keys="[route.name === 'new_product_document_files' ? 'new_product_document' : route.name]"
       class="!border-0 h-[calc(100%-1rem)] overflow-y-auto"
       @click="$emit('update:modelValue', false)"
     >
@@ -65,6 +65,12 @@
           <router-link :to="{ name: 'new_product_calender' }">
             <calendar-outlined />
             <span>New Product Calendar</span>
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="new_product_document" title="New Product Document">
+          <router-link :to="{ name: 'new_product_document' }">
+            <file-text-outlined />
+            <span>New Product Document</span>
           </router-link>
         </a-menu-item>
       </a-menu-item-group>

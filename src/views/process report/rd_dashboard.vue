@@ -21,22 +21,24 @@ const cards = [
   { label: "Technology Doc.", count: 0 },
 ];
 
+const roseTheme = { bg: "bg-rose-100", text: "text-rose-900", border: "border-rose-200", selectedBorder: "border-rose-400", headerBg: "bg-rose-100", headerText: "text-rose-900" };
+const emeraldTheme = { bg: "bg-emerald-100", text: "text-emerald-900", border: "border-emerald-200", selectedBorder: "border-emerald-400", headerBg: "bg-emerald-100", headerText: "text-emerald-900" };
+
+const cardThemes = cards.map((card) => (card.count > 0 ? roseTheme : emeraldTheme));
+
 const selectedIndex = ref(0);
 const selectedCard = computed(() => cards[selectedIndex.value] ?? cards[0]);
+const selectedTheme = computed(() => cardThemes[selectedIndex.value] ?? cardThemes[0]);
+const titleClasses = computed(() => `${selectedTheme.value.headerBg} ${selectedTheme.value.headerText} border-slate-200`);
 
 function cardClasses(card, index) {
-  const isPending = card.count > 0;
+  const theme = cardThemes[index] ?? cardThemes[0];
   const isSelected = index === selectedIndex.value;
   return [
-    "group flex flex-col items-center justify-center rounded-lg border px-2 py-2.5 text-center shadow-sm transition-all duration-150 cursor-pointer select-none hover:-translate-y-0.5 hover:shadow-md",
-    isPending
-      ? "bg-gradient-to-br from-orange-100 to-orange-200/70 border-orange-200/80 text-orange-900"
-      : "bg-gradient-to-br from-emerald-50 to-emerald-100 border-emerald-200/80 text-emerald-800",
-    isSelected
-      ? isPending
-        ? "ring-2 ring-orange-400 ring-offset-2 ring-offset-slate-50"
-        : "ring-2 ring-emerald-400 ring-offset-2 ring-offset-slate-50"
-      : "",
+    "group flex flex-col items-center justify-center rounded-lg border-2 px-2 py-2.5 text-center shadow-sm transition-all duration-150 cursor-pointer select-none hover:-translate-y-0.5 hover:shadow-md",
+    theme.bg,
+    theme.text,
+    isSelected ? theme.selectedBorder : theme.border,
   ];
 }
 
@@ -114,13 +116,13 @@ const sampleRows = [
             <tr>
               <th
                 colspan="7"
-                class="bg-orange-100 text-orange-900 font-semibold text-sm px-4 py-3 text-center border border-orange-200"
+                :class="[titleClasses, 'font-semibold text-sm px-4 py-3 text-center border']"
               >
                 {{ selectedCard?.label }}
               </th>
               <th
                 colspan="2"
-                class="bg-orange-100 border border-orange-200"
+                :class="[titleClasses, 'border']"
               ></th>
             </tr>
             <tr class="bg-emerald-50 text-slate-700">

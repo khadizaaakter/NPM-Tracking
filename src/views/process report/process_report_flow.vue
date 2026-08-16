@@ -96,18 +96,18 @@ const activeColumn = ref(null);
   <MainLayout>
     <div class="min-h-screen bg-slate-50 p-4 sm:p-6 md:p-8">
       <div class="flex flex-col gap-1 mb-6">
-        <h2 class="text-base sm:text-lg font-semibold text-slate-800">Process Report Flow</h2>
-        <p class="text-sm text-black">
+        <h2 class="text-lg sm:text-xl font-semibold text-slate-800">Process Report Flow</h2>
+        <!-- <p class="text-sm text-black">
           End-to-end sub-activity tracker from PP raise through commercial launch.
-        </p>
+        </p> -->
       </div>
 
       <div
         class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm bg-white"
       >
         <div
-          class="grid text-xs w-max"
-          :style="{ gridTemplateColumns: `12rem repeat(${columns.length}, 9rem)` }"
+          class="grid text-sm w-max"
+          :style="{ gridTemplateColumns: `13rem repeat(${columns.length}, 11rem)` }"
         >
           <!-- Header row -->
           <div
@@ -118,7 +118,7 @@ const activeColumn = ref(null);
           <div
             v-for="col in columns"
             :key="col.label + '-h'"
-            class="relative bg-slate-100 text-black font-semibold px-3 py-2 border border-slate-200 break-words text-[11px] leading-tight flex items-end"
+            class="relative bg-slate-100 text-black font-semibold px-3 py-2 border border-slate-200 break-words text-sm leading-snug flex items-end"
           >
             {{ col.label }}
             <button
@@ -235,7 +235,7 @@ const activeColumn = ref(null);
           </button>
         </div>
         <div class="overflow-x-auto">
-          <table class="w-full text-xs">
+          <table class="w-full text-sm">
             <thead>
               <tr class="bg-slate-100 text-slate-700">
                 <th class="px-3 py-2 text-left font-semibold border border-slate-200">Department</th>

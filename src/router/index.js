@@ -8,6 +8,8 @@ import Rd_dashboard from "@/views/process report/rd_dashboard.vue";
 import Process_report_flow from "@/views/process report/process_report_flow.vue";
 import Gantt_chart from "@/views/Gantt Report/gantt_chart.vue";
 import New_product_calender from "@/views/New product calender/new_product_calender.vue";
+import New_product_document from "@/views/New product calender/new_product_document.vue";
+import New_product_document_files from "@/views/New product calender/new_product_document_files.vue";
 
 const routes = [
   {
@@ -50,6 +52,16 @@ const routes = [
     path: "/new_product_calender",
     name: "new_product_calender",
     component: New_product_calender,
+  },
+  {
+    path: "/new_product_document",
+    name: "new_product_document",
+    component: New_product_document,
+  },
+  {
+    path: "/new_product_document/:slug",
+    name: "new_product_document_files",
+    component: New_product_document_files,
   },
 
   {

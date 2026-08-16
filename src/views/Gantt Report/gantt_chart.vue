@@ -104,9 +104,9 @@ function cellColor(row, weekIndex) {
     <div class="min-h-screen bg-slate-50 p-4 sm:p-6 md:p-8">
       <!-- Header: subtitle, title banner, legend -->
       <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
-        <div class="text-sm font-bold text-slate-800">
+        <!-- <div class="text-sm font-bold text-slate-800">
           {{ productTitle }}
-        </div>
+        </div> -->
 
         <div
           class="self-start bg-blue-400 text-white font-bold text-lg px-6 sm:px-10 py-1 rounded-md shadow-sm"

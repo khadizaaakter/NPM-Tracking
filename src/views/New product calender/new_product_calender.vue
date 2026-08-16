@@ -13,10 +13,10 @@ const stats = {
 };
 
 const COLOR = {
-  plain: "",
-  pink: "bg-red-200",
-  red: "bg-red-600 text-white font-semibold",
-  green: "bg-green-300",
+  plain: "text-slate-800",
+  pink: "bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-200",
+  red: "bg-red-500 text-white font-semibold shadow-sm",
+  green: "bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-200",
 };
 
 // One entry per month column (Nov-25 -> Sep-26), top to bottom as they appear on the sheet
@@ -111,13 +111,13 @@ function cellColor(colIndex, rowIndex) {
 
 <template>
   <MainLayout>
-    <div class="min-h-screen bg-slate-50 p-4 sm:p-6 md:p-8 font-serif">
-      <h1 class="text-base sm:text-lg font-bold text-black mb-2">
+    <div class="min-h-screen bg-slate-50 p-4 sm:p-6 md:p-8 font-sans">
+      <h1 class="text-lg sm:text-xl font-bold text-slate-800 mb-4 tracking-tight">
         New Product (New Molecule+Line Extension) Calendar
       </h1>
 
-      <div class="overflow-x-auto border border-black bg-white shadow-sm">
-        <table class="border-collapse text-[11px] leading-tight w-full table-fixed">
+      <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-md">
+        <table class="border-separate border-spacing-0 text-[12.5px] leading-snug w-full table-fixed">
           <colgroup>
             <col class="w-[70px]" />
             <col v-for="m in months" :key="'col-' + m" class="w-[100px]" />
@@ -125,60 +125,64 @@ function cellColor(colIndex, rowIndex) {
 
           <tbody>
             <!-- Summary rows -->
-            <tr>
-              <td class="border border-black px-2 py-1 font-semibold">NG</td>
+            <tr class="bg-slate-50">
+              <td class="border-b border-r border-slate-200 px-2 py-1.5 font-semibold text-slate-600">NCI</td>
               <td
                 v-for="(v, i) in stats.ng"
                 :key="'ng-' + i"
-                class="border border-black px-2 py-1 text-center"
+                class="border-b border-r border-slate-200 px-2 py-1.5 text-center text-slate-700 last:border-r-0"
               >
                 {{ v }}
               </td>
             </tr>
-            <tr>
-              <td class="border border-black px-2 py-1 font-semibold">AHL</td>
+            <tr class="bg-slate-50">
+              <td class="border-b border-r border-slate-200 px-2 py-1.5 font-semibold text-slate-600">AHL</td>
               <td
                 v-for="(v, i) in stats.ahl"
                 :key="'ahl-' + i"
-                class="border border-black px-2 py-1 text-center"
+                class="border-b border-r border-slate-200 px-2 py-1.5 text-center text-slate-700 last:border-r-0"
               >
                 {{ v }}
               </td>
             </tr>
-            <tr>
-              <td class="border border-black px-2 py-1 font-semibold">Total</td>
+            <tr class="bg-slate-100">
+              <td class="border-b border-r border-slate-200 px-2 py-1.5 font-semibold text-slate-700">Total</td>
               <td
                 v-for="(v, i) in stats.total"
                 :key="'total-' + i"
-                class="border border-black px-2 py-1 text-center font-semibold"
+                class="border-b border-r border-slate-200 px-2 py-1.5 text-center font-semibold text-slate-800 last:border-r-0"
               >
                 {{ v }}
               </td>
             </tr>
 
             <!-- Month header -->
-            <tr class="bg-[#1f3864]">
-              <td class="border border-black px-2 py-1 text-center font-bold text-amber-300">
+            <tr class="bg-gradient-to-r from-[#1f3864] to-[#2d4a7a]">
+              <td class="border-b border-r border-white/10 px-2 py-2 text-center font-bold text-amber-300 tracking-wide">
                 Plant
               </td>
               <td
                 v-for="m in months"
                 :key="'hdr-' + m"
-                class="border border-black px-2 py-1 text-center font-bold text-white"
+                class="border-b border-r border-white/10 px-2 py-2 text-center font-bold text-white tracking-wide last:border-r-0"
               >
                 {{ m }}
               </td>
             </tr>
 
             <!-- Data rows -->
-            <tr v-for="r in rowIndexes" :key="'row-' + r">
+            <tr
+              v-for="r in rowIndexes"
+              :key="'row-' + r"
+              class="odd:bg-white even:bg-slate-50/60 hover:bg-sky-50 transition-colors"
+            >
               <td
                 v-if="r === 0"
                 :rowspan="maxRows"
-                class="border border-black text-center align-middle font-semibold"
+                class="border-b border-r border-slate-200 text-center align-middle font-semibold bg-slate-100"
               >
                 <span
-                  class="inline-block"
+                  class="inline-block rounded-full bg-slate-200/70 px-1 py-3 text-slate-700 tracking-wide"
                   style="writing-mode: vertical-rl; transform: rotate(180deg)"
                 >
                   NG (New)
@@ -187,11 +191,14 @@ function cellColor(colIndex, rowIndex) {
               <td
                 v-for="(_, c) in columns"
                 :key="'cell-' + c + '-' + r"
-                :class="['border border-black px-1.5 py-1 text-center align-top', cellColor(c, r)]"
+                class="border-b border-r border-slate-200 p-1 align-top last:border-r-0"
               >
-                <template v-if="cellLines(c, r)">
+                <div
+                  v-if="cellLines(c, r)"
+                  :class="['rounded-md px-1.5 py-1.5 text-center font-medium', cellColor(c, r)]"
+                >
                   <div v-for="(line, li) in cellLines(c, r)" :key="li">{{ line }}</div>
-                </template>
+                </div>
               </td>
             </tr>
           </tbody>
