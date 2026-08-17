@@ -13,10 +13,10 @@ const cards = [
 ];
 
 const cardThemes = [
-  { bg: "bg-blue-100", text: "text-blue-900", border: "border-blue-200", selectedBorder: "border-blue-400", headerBg: "bg-blue-100", headerText: "text-blue-900" },
-  { bg: "bg-blue-100", text: "text-blue-900", border: "border-blue-200", selectedBorder: "border-blue-400", headerBg: "bg-blue-100", headerText: "text-violet-900" },
-  { bg: "bg-blue-100", text: "text-blue-900", border: "border-blue-200", selectedBorder: "border-blue-400", headerBg: "bg-blue-100", headerText: "text-teal-900" },
-  { bg: "bg-blue-100", text: "text-blue-900", border: "border-blue-200", selectedBorder: "border-blue-400", headerBg: "bg-blue-100", headerText: "text-teal-900" },
+  { bg: "bg-rose-100", text: "text-rose-900", border: "border-rose-200", selectedBorder: "border-rose-400", headerBg: "bg-rose-100", headerText: "text-rose-900" },
+  { bg: "bg-rose-100", text: "text-rose-900", border: "border-rose-200", selectedBorder: "border-rose-400", headerBg: "bg-rose-100", headerText: "text-rose-900" },
+  { bg: "bg-rose-100", text: "text-rose-900", border: "border-rose-200", selectedBorder: "border-rose-400", headerBg: "bg-rose-100", headerText: "text-rose-900" },
+  { bg: "bg-rose-100", text: "text-rose-900", border: "border-rose-200", selectedBorder: "border-rose-400", headerBg: "bg-rose-100", headerText: "text-rose-900" },
   { bg: "bg-rose-100", text: "text-rose-900", border: "border-rose-200", selectedBorder: "border-rose-400", headerBg: "bg-rose-100", headerText: "text-rose-900" },
   { bg: "bg-emerald-100", text: "text-emerald-900", border: "border-emerald-200", selectedBorder: "border-emerald-400", headerBg: "bg-emerald-100", headerText: "text-emerald-900" },
   { bg: "bg-emerald-100", text: "text-emerald-900", border: "border-emerald-200", selectedBorder: "border-emerald-400", headerBg: "bg-emerald-100", headerText: "text-emerald-900" },

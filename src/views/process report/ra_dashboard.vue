@@ -21,6 +21,7 @@ const selectedIndex = ref(0);
 const selectedCard = computed(() => cards[selectedIndex.value] ?? cards[0]);
 const selectedTheme = computed(() => cardThemes[selectedIndex.value] ?? cardThemes[0]);
 const titleClasses = computed(() => `${selectedTheme.value.headerBg} ${selectedTheme.value.headerText} border-slate-200`);
+const isAnnexureApproval = computed(() => selectedCard.value?.label === "Annexure Approval");
 
 function cardClasses(card, index) {
   const theme = cardThemes[index] ?? cardThemes[0];
@@ -113,7 +114,7 @@ const sampleRows = [
                 {{ selectedCard?.label }}
               </th>
               <th
-                colspan="2"
+                :colspan="isAnnexureApproval ? 4 : 2"
                 :class="[titleClasses, 'border']"
               ></th>
             </tr>
@@ -138,6 +139,18 @@ const sampleRows = [
               </th>
               <th class="px-3 py-2 font-semibold border border-slate-200">
                 Launching
+              </th>
+              <th
+                v-if="isAnnexureApproval"
+                class="px-3 py-2 font-semibold border border-slate-200"
+              >
+                Annexure Issue Date
+              </th>
+              <th
+                v-if="isAnnexureApproval"
+                class="px-3 py-2 font-semibold border border-slate-200"
+              >
+                Annexure Expiry Date
               </th>
               <th class="px-3 py-2 font-semibold border border-slate-200">
                 Action
@@ -174,6 +187,14 @@ const sampleRows = [
               <td class="px-3 py-3 border border-slate-200 text-slate-700">
                 {{ row.launching }}
               </td>
+              <td
+                v-if="isAnnexureApproval"
+                class="px-3 py-3 border border-slate-200 text-slate-700"
+              ></td>
+              <td
+                v-if="isAnnexureApproval"
+                class="px-3 py-3 border border-slate-200 text-slate-700"
+              ></td>
               <td class="px-3 py-3 border border-slate-200">
                 <div class="flex items-center gap-3">
                   <label

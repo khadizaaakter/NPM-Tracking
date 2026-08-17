@@ -23,14 +23,14 @@
         <a-menu-item key="new_product_document" title="New Product Document">
           <router-link :to="{ name: 'new_product_document' }">
             <file-text-outlined />
-            <span>New Product Document</span>
+            <span>Document Management</span>
           </router-link>
         </a-menu-item>
 
         <a-menu-item key="new_product_calender" title="New Product Calendar">
           <router-link :to="{ name: 'new_product_calender' }">
             <calendar-outlined />
-            <span>New Product Calendar</span>
+            <span>Product Calendar</span>
           </router-link>
         </a-menu-item>
       </a-menu-item-group>

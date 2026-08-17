@@ -160,9 +160,6 @@ function cellColor(row, weekIndex) {
               <th rowspan="2" class="border border-slate-300 bg-slate-100 px-2 py-2 text-xs font-semibold min-w-[80px]">
                 Status
               </th>
-              <th rowspan="2" class="border border-slate-300 bg-slate-100 px-2 py-2 text-xs font-semibold min-w-[80px]">
-                Days Required
-              </th>
               <th
                 v-for="month in months"
                 :key="month.label"
@@ -195,9 +192,7 @@ function cellColor(row, weekIndex) {
               <td class="border border-slate-300 px-2 py-2 text-center text-xs text-black">
                 {{ row.status }}
               </td>
-              <td class="border border-slate-300 px-2 py-2 text-center text-xs text-black">
-                {{ row.daysRequired }}
-              </td>
+
               <td
                 v-for="weekIndex in weekCols"
                 :key="weekIndex"
